@@ -11,95 +11,100 @@
     <packaging>jar</packaging>
     <name>KafSaxParser</name>
     <description>Parser that reads NewsReader NAF files or KYOTO KAF files and can serialize it again.</description>
-     <url>http://www.newsreader-project.eu</url>
-     <scm>
+    <url>http://www.newsreader-project.eu</url>
+    <scm>
         <connection>scm:git:git@github.com/cltl/KafSaxParser</connection>
         <developerConnection>scm:git:git@github.com/cltl/KafSaxParser</developerConnection>
         <url>git@github.com/cltl/KafSaxParser</url>
-     </scm>
+    </scm>
 
     <licenses>
         <license>
-          <name>The Apache License, Version 2.0</name>
-          <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <name>The Apache License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
         </license>
     </licenses>
 
     <developers>
-      <developer>
-          <name>Piek Vossen</name>
-          <email>piek.vossen@vu.nl</email>
-          <organization>VU University Amsterdam</organization>
-          <organizationUrl>http://www.cltl.nl</organizationUrl>
-      </developer>
+        <developer>
+            <name>Piek Vossen</name>
+            <email>piek.vossen@vu.nl</email>
+            <organization>VU University Amsterdam</organization>
+            <organizationUrl>http://www.cltl.nl</organizationUrl>
+        </developer>
     </developers>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
 
     <dependencies>
 
 
-      <dependency>
-        <groupId>ant</groupId>
-        <artifactId>ant</artifactId>
-        <version>1.6.5</version>
-      </dependency>
+        <dependency>
+            <groupId>ant</groupId>
+            <artifactId>ant</artifactId>
+            <version>1.6.5</version>
+        </dependency>
 
     </dependencies>
 
-      <repositories>
+    <repositories>
         <repository>
-           <id>jitpack.io</id>
+            <id>jitpack.io</id>
             <url>https://jitpack.io</url>
         </repository>
-      </repositories>
+    </repositories>
 
     <build>
-      <plugins>
+        <plugins>
 
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-compiler-plugin</artifactId>
-          <version>2.0</version>
-          <configuration>
-            <source>1.6</source>
-            <target>1.6</target>
-            <debug>false</debug>
-          </configuration>
-        </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>2.0</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                    <debug>false</debug>
+                    <encoding>UTF-8</encoding>
+                </configuration>
+            </plugin>
 
-        <plugin>
-          <artifactId>maven-assembly-plugin</artifactId>
-          <configuration>
-            <descriptorRefs>
-              <descriptorRef>jar-with-dependencies</descriptorRef>
-            </descriptorRefs>
-            <archive>
-              <manifestEntries>
-                <Module-Interface>eu.kyotoproject.kaf.KafSaxParser</Module-Interface>
-              </manifestEntries>
-            </archive>
-          </configuration>
-          <executions>
-            <execution>
-              <id>make-assembly</id><!-- this is used for inheritance merges -->
-              <phase>package</phase><!-- append to the packaging phase -->
-              <goals>
-                <goal>attached</goal><!-- goals == mojos -->
-              </goals>
-            </execution>
-          </executions>
-        </plugin>
-          <plugin>
-              <groupId>org.sonatype.plugins</groupId>
-              <artifactId>nexus-staging-maven-plugin</artifactId>
-              <version>1.6.3</version>
-              <extensions>true</extensions>
-              <configuration>
-                  <serverId>ossrh</serverId>
-                  <nexusUrl>https://oss.sonatype.org/</nexusUrl>
-                  <autoReleaseAfterClose>true</autoReleaseAfterClose>
-              </configuration>
-          </plugin>
-      </plugins>
+            <plugin>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <configuration>
+                    <descriptorRefs>
+                        <descriptorRef>jar-with-dependencies</descriptorRef>
+                    </descriptorRefs>
+                    <archive>
+                        <manifestEntries>
+                            <Module-Interface>eu.kyotoproject.kaf.KafSaxParser</Module-Interface>
+                        </manifestEntries>
+                    </archive>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>make-assembly</id><!-- this is used for inheritance merges -->
+                        <phase>package</phase><!-- append to the packaging phase -->
+                        <goals>
+                            <goal>attached</goal><!-- goals == mojos -->
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.sonatype.plugins</groupId>
+                <artifactId>nexus-staging-maven-plugin</artifactId>
+                <version>1.6.3</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <serverId>ossrh</serverId>
+                    <nexusUrl>https://oss.sonatype.org/</nexusUrl>
+                    <autoReleaseAfterClose>true</autoReleaseAfterClose>
+                </configuration>
+            </plugin>
+        </plugins>
     </build>
-      
+
 </project>
